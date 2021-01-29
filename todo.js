@@ -5,22 +5,52 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = 'toDos';
 
-const toDos = [];   // 할 일을 저장할 배열 생성
+// function filterFn(toDo) {
+//     return toDo.id === 1;
+// }
+
+let toDos = [];   // 할 일을 저장할 배열 생성
+
+function deleteToDo(event) {
+    // console.dir(event.target);
+    // console.log(event.target.parentNode);
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    // const cleanToDos = toDos.filter(filterFn);   // filterFn이 체크된 아이템들의 array를 주는 것
+    const cleanToDos = toDos.filter(function(toDo) {
+        // console.log(toDo.id, li.id);      // toDo.id는 숫자, li.id는 string
+        return toDo.id !== parseInt(li.id);     // 모든 li에는 id가 있음
+    });
+    // console.log(cleanToDos);
+    // X버튼을 누르면 cleanToDos는 1개 줄고 toDos는 그대로이다.
+    // 이제 할 것은 toDos와 cleanToDos을 교체해주면 된다!!!
+    toDos = cleanToDos;     // toDos가 const이기 때문에 let으로 바꿔준다.
+    saveToDos();
+}
+
+function saveToDos() {
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));  // JSON.stringify() : js object를 string으로 바꿔줌
+}
 
 function paintToDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
-    delBtn.innerText = "❌";
     const span = document.createElement("span");
+    const newId = toDos.length + 1;
+    delBtn.innerText = "❌";
+    delBtn.addEventListener("click", deleteToDo);
     span.innerText = text;
-    li.appendChild(span);
     li.appendChild(delBtn);
+    li.appendChild(span);
+    li.id = newId;
     toDoList.appendChild(li);
     const toDoObj = {
         text: text,
-        id: toDos.length + 1
+        id: newId
     }
     toDos.push(toDoObj);    // 할 일을 추가할 때 마다 배열에 저장
+    saveToDos();    // push 이후에 호출
 }
 
 function handleSubmit(event) {
@@ -30,10 +60,18 @@ function handleSubmit(event) {
     toDoInput.value = "";
 }
 
+// function something(toDo) {
+//     console.log(toDo.text);
+// }
+
 function loadToDos() {
     const loadedToDos = localStorage.getItem(TODOS_LS);
     if (loadedToDos !== null) {
-
+        const parsedToDos = JSON.parse(loadedToDos);
+        // console.log(parsedToDos);
+        parsedToDos.forEach(function(toDo) {
+            paintToDo(toDo.text);
+        });
     }
 }
 
