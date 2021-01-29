@@ -43,3 +43,13 @@ h1 {
     z-index: -1;
     animation: fadeIn 0.5s linear;
 }
+
+.weather {
+    float: right;
+    margin-right: 20px;
+    font-style: oblique;
+}
+
+.clock {
+    font-size: 200px;
+}

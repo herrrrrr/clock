@@ -25,7 +25,21 @@ function askForName() {
 function paintGreeting(text) {
     form.classList.remove(SHOWING_CN);   // 텍스트를 색칠할 거라면 폼을 숨긴다.
     greeting.classList.add(SHOWING_CN);
-    greeting.innerText = `Hello ${text}`;
+
+    const date = new Date();
+    const hours = date.getHours();
+
+    let greet = "";
+
+    if (hours >= 21) {
+        greet = "Good Night, ";
+    } else if (hours >= 12) {
+        greet = "Good Afternoon, ";
+    } else {
+        greet = "Good Morning, ";
+    }
+
+    greeting.innerText = `${greet} ${text}.`;
 }
 
 function loadName() {

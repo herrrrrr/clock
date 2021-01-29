@@ -1,13 +1,18 @@
+const weather = document.querySelector(".js-weather");
 const API_KEY = "433bd3dc950ee0912a9a12dacbf0f582";
 const COORDS = 'coords';
 
+// API를 활용하는 위치정보
 function getWeather(lat, lng) {
     // 섭씨 단위 &units=metric 추가
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`
     ).then(function(response) {     // then은 기본적으로 함수를 호출하는 역할 (데이터가 완전히 들어온 다음 호출하려고 한다.)
         return response.json()
     }).then(function(json) {
-        console.log(json)
+        // console.log(json);
+        const temperature = json.main.temp;
+        const place = json.name;
+        weather.innerText = `${temperature}˚ @ ${place}`;
     });
 }
 
