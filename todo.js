@@ -41,6 +41,8 @@ function paintToDo(text) {
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
     span.innerText = text;
+    li.style.textAlign = "left";
+    li.style.listStyle = "none";
     li.appendChild(delBtn);
     li.appendChild(span);
     li.id = newId;
