@@ -34,6 +34,36 @@ function saveToDos() {
 }
 
 function paintToDo(text) {
+
+
+    // const test = ''; //    x135153135
+    // const test = null; //    x135
+    // const test = undefined; //    x135153
+
+    
+    // const test = '2'; //    x135153135
+    // const test = '12312'; //    x234234234
+
+    
+    // const object = {        // x3453485034850345
+    //     tset:[],            // x465468
+    //     string: '',         // x98989
+    // };
+
+    // string.string = 'sdfsdf';   // xsd5f4sd6f4s
+
+    // object_tmp = [...object, string: 'sdfsdf'];
+
+
+    // const object_tmp = {        // xsdfsdfsdsdf
+    //     tset:[],            // x465468
+    //     string: '',         // x98989
+    // };
+
+    // object_tmp.string = 'sdfsdfds';
+
+
+
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
