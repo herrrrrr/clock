@@ -69,6 +69,9 @@ function paintToDo(text) {
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     delBtn.innerText = "❌";
+    delBtn.style.backgroundColor = "rgba( 255, 255, 255, 0.0 )";
+    delBtn.style.border = "rgba( 255, 255, 255, 0.0 )";
+    delBtn.style.fontSize = "28px";
     delBtn.addEventListener("click", deleteToDo);
     span.innerText = text;
     li.style.textAlign = "left";

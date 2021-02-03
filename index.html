@@ -7,27 +7,26 @@
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-
     <div>
         <span class="js-weather weather"></span>
     </div>
     
-    <center>
-        <div class="js-clock" style="clear: both;">
+    <div style="clear: both; text-align: center; position: fixed; top: 22%; left: 35%;">
+        <div class="js-clock" style="width: 650px;">
             <span class="clock">00:00:00</span>
         </div>
-        <form class="js-form form">
-            <input type="text" placeholder="What's your name?" />
-        </form>
-        <span class="js-greetings greetings"></span>
-        <form class="js-toDoForm">
-            <input type="text" placeholder="Write a to do." />
-        </form>
         <div>
-            <ul class="js-toDoList">
+            <form class="js-form form">
+                <input type="text" placeholder="What's your name?" />
+            </form>
+            <span class="js-greetings greetings"></span>
+            <form class="js-toDoForm">
+                <input type="text" placeholder="Write a to do." />
+            </form>
+            <ul class="js-toDoList" style="position: relative; left: 13%; font-size: 30px;">
             </ul>
         </div>
-    </center>
+    </div>
         
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
